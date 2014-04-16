@@ -1,0 +1,36 @@
+<resources>
+
+    <string name="app_name">天气应用</string>
+    
+    <!-- 当前天气 -->
+    <string name="forecast_city_name">城市</string>
+    <string name="forecast_city_code">城市代码</string>
+    <string name="forecast_current_temp">当前温度</string>
+    <string name="forecast_current_wd">风向</string>
+    <string name="forecast_current_ws">风速</string>
+    <string name="forecast_current_sd">湿度</string>
+    <string name="forecast_current_wse">不知道</string>
+    <string name="forecast_current_publish_time">发布时间</string>
+    
+    <!-- 未来天气预报 -->
+    <string name="forecast_temp1">1.</string>
+    <string name="forecast_temp2">2.</string>
+    <string name="forecast_temp3">3.</string>
+    <string name="forecast_temp4">4.</string>
+    <string name="forecast_temp5">5.</string>
+    <string name="forecast_temp6">6.</string>
+    
+    <!-- 各种指数 -->
+    <string name="forecast_index">体感温度</string>
+    <string name="forecast_index_d">穿衣指数</string>
+    <string name="forecast_index48">48小时体感温度</string>
+    <string name="forecast_index48_d">48小时穿衣指数</string>
+    <string name="forecast_uv">紫外线指数</string>
+    <string name="forecast_uv48">48小时紫外线指数</string>
+    <string name="forecast_index_xc">洗车指数</string>
+    <string name="forecast_index_tr">出游指数</string>
+    <string name="forecast_index_co">舒适指数</string>
+    <string name="forecast_index_cl">晨练指数</string>
+    <string name="forecast_index_ls">晾晒指数</string>
+    <string name="forecast_index_ag">感冒指数</string>
+</resources>
