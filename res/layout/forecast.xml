@@ -369,7 +369,7 @@
             android:textSize="14.0dip" />
 
         <TextView
-            android:id="@+id/tv_forecast_uv"
+            android:id="@+id/tv_forecast_index_uv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginLeft="5.0dip"
@@ -397,7 +397,7 @@
             android:textSize="14.0dip" />
 
         <TextView
-            android:id="@+id/tv_forecast_uv48"
+            android:id="@+id/tv_forecast_index48_uv"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginLeft="5.0dip"

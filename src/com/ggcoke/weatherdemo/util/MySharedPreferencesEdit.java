@@ -40,10 +40,17 @@ public class MySharedPreferencesEdit {
 		return sPreferences.getLong("LastUpdateTime", 0);
 	}
 	
-	public void setWeatherInfoWithCityCode(String cityCode, String WeatherInfo) {
-		editor.putString(cityCode, WeatherInfo).commit();
+	public void setWeatherInfoWithCityCode(String cityCode, String weatherInfo) {
+		editor.putString(cityCode, weatherInfo).commit();
 	}
 	public String getWeatherInfoByCityCode(String cityCode) {
 		return sPreferences.getString(cityCode, null);
+	}
+	
+	public void setWeatherIndexWithCityCode(String cityCode, String weatherIndex) {
+		editor.putString("index_"+cityCode, weatherIndex);
+	}
+	public String getWeatherIndexByCityCode(String cityCode) {
+		return sPreferences.getString("index_"+cityCode, null);
 	}
 }
