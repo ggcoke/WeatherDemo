@@ -37,6 +37,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5.0dip"
                     android:background="@null"
+                    android:gravity="center"
                     android:textColor="@color/white_color"
                     android:textSize="14.0dip" />
             </LinearLayout>
@@ -67,6 +68,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5.0dip"
                     android:background="@null"
+                    android:gravity="center"
                     android:textColor="@color/white_color"
                     android:textSize="14.0dip" />
             </LinearLayout>
@@ -97,6 +99,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5.0dip"
                     android:background="@null"
+                    android:gravity="center"
                     android:textColor="@color/white_color"
                     android:textSize="14.0dip" />
             </LinearLayout>
@@ -127,6 +130,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5.0dip"
                     android:background="@null"
+                    android:gravity="center"
                     android:textColor="@color/white_color"
                     android:textSize="14.0dip" />
             </LinearLayout>
@@ -157,6 +161,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5.0dip"
                     android:background="@null"
+                    android:gravity="center"
                     android:textColor="@color/white_color"
                     android:textSize="14.0dip" />
             </LinearLayout>
@@ -186,6 +191,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5.0dip"
                     android:background="@null"
+                    android:gravity="center"
                     android:textColor="@color/white_color"
                     android:textSize="14.0dip" />
             </LinearLayout>
@@ -215,6 +221,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5.0dip"
                     android:background="@null"
+                    android:gravity="center"
                     android:textColor="@color/white_color"
                     android:textSize="14.0dip" />
             </LinearLayout>
@@ -223,7 +230,7 @@
             <LinearLayout
                 android:id="@+id/ll_index"
                 android:layout_width="fill_parent"
-                android:layout_height="45.0dip"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10.0dip"
                 android:layout_marginRight="10.0dip"
                 android:gravity="center_vertical"
@@ -242,7 +249,7 @@
                 <TextView
                     android:id="@+id/tv_index"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5.0dip"
                     android:background="@null"
                     android:textColor="@color/white_color"

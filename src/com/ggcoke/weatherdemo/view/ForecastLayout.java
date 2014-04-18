@@ -55,12 +55,12 @@ public class ForecastLayout extends LinearLayout{
         try {
             JSONObject obj = new JSONObject(weatherInfo);
             tvCityName.setText(obj.getString("city"));
-            currentWD.setText(obj.getString("wendu"));
+            currentWD.setText(obj.getString("wendu")+ "℃");
             currentFX.setText(obj.getString("fengxiang"));
             currentFL.setText(obj.getString("fengli"));
             currentSD.setText(obj.getString("shidu"));
             currentUpdateTime.setText(obj.getString("currentTime") + " " + obj.getString("updatetime"));
-            currentAlarm.setText(null == obj.getString("alarm") ? "无":obj.getString("alarm"));
+            currentAlarm.setText(null == obj.getString("alarm") || obj.getString("alarm").length() <= 0 || "null".equals(obj.getString("alarm")) ? "无":obj.getString("alarm"));
 
             StringBuilder sb = new StringBuilder();
             JSONArray indexes = obj.getJSONObject("zhishus").getJSONArray("zhishu");
@@ -71,8 +71,9 @@ public class ForecastLayout extends LinearLayout{
                         .append(info.getString("value"))
                         .append(",")
                         .append(info.getString("detail"))
-                        .append("\r\n<br/>");
+                        .append("\r\n");
             }
+            index.setText(sb.toString());
         } catch (JSONException e) {
             Toast.makeText(mContext, "解析天气数据失败，请重试", Toast.LENGTH_SHORT).show();
         }

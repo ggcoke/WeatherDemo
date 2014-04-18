@@ -28,8 +28,8 @@ public class LeftSlideFragment extends Fragment{
 		String cityCodes[] = MySharedPreferencesEdit.getInstance(getActivity()).getCityCodes().split("-");
 		for (String cname : cityCodes) {
 			String[] code2City = cname.split("_");
-			if (!mCityNameList.contains(code2City[1])) {
-				mCityNameList.add(code2City[1]);
+			if (!mCityNameList.contains(code2City[code2City.length-1])) {
+				mCityNameList.add(code2City[code2City.length-1]);
 			}
 		}
 		
