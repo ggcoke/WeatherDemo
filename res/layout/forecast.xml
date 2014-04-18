@@ -3,603 +3,252 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/content_bg"
-    android:orientation="vertical" >
-<ScrollView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
-    <RelativeLayout
+    android:orientation="vertical">
+
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-    <!-- 城市名称 -->
-    <LinearLayout
-        android:id="@+id/ll_city_name"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip" >
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_city_name"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-
-        <TextView
-            android:id="@+id/tv_city_name"
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    
-    <!-- 城市代码 -->
-    <LinearLayout
-        android:id="@+id/ll_city_code"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_city_name">
+            android:layout_height="wrap_content">
+            <!-- 城市名称 -->
+            <LinearLayout
+                android:id="@+id/ll_city_name"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5.0dip">
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_city_code"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
+                <TextView
+                    android:layout_width="70.0dip"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/forecast_city_name"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
 
-        <TextView
-            android:id="@+id/tv_city_code"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    
-    <!-- 温度 -->
-    <LinearLayout
-        android:id="@+id/ll_current_temp"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_city_code">
+                <TextView
+                    android:id="@+id/tv_city_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:background="@null"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_current_temp"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
+            <!-- 温度 -->
+            <LinearLayout
+                android:id="@+id/ll_current_wendu"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5.0dip"
+                android:layout_below="@id/ll_city_name">
 
-        <TextView
-            android:id="@+id/tv_current_temp"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    
-    <!-- 湿度-->
-    <LinearLayout
-        android:id="@+id/ll_current_sd"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_current_temp">
+                <TextView
+                    android:layout_width="70.0dip"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/forecast_current_wendu"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_current_sd"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
+                <TextView
+                    android:id="@+id/tv_current_wendu"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:background="@null"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_current_sd"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
+            <!-- 风向 -->
+            <LinearLayout
+                android:id="@+id/ll_current_fengxiang"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5.0dip"
+                android:layout_below="@id/ll_current_wendu">
 
-    <!-- 风向-->
-    <LinearLayout
-        android:id="@+id/ll_current_wd"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_current_sd">
+                <TextView
+                    android:layout_width="70.0dip"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/forecast_current_fengxiang"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_current_wd"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
+                <TextView
+                    android:id="@+id/tv_current_fengxiang"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:background="@null"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_current_wd"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    
-    <!-- 风速-->
-    <LinearLayout
-        android:id="@+id/ll_current_ws"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_current_wd">
+            <!-- 风力 -->
+            <LinearLayout
+                android:id="@+id/ll_current_fengli"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5.0dip"
+                android:layout_below="@id/ll_current_fengxiang">
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_current_ws"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
+                <TextView
+                    android:layout_width="70.0dip"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/forecast_current_fengli"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
 
-        <TextView
-            android:id="@+id/tv_current_ws"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    
-    <!-- 不知道-->
-    <LinearLayout
-        android:id="@+id/ll_current_wse"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_current_ws">
+                <TextView
+                    android:id="@+id/tv_current_fengli"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:background="@null"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_current_wse"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
+            <!-- 湿度 -->
+            <LinearLayout
+                android:id="@+id/ll_current_shidu"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5.0dip"
+                android:layout_below="@id/ll_current_fengli">
 
-        <TextView
-            android:id="@+id/tv_current_wse"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    
-    <!-- 发布时间-->
-    <LinearLayout
-        android:id="@+id/ll_current_publish_time"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_current_wse">
+                <TextView
+                    android:layout_width="70.0dip"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/forecast_current_shidu"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_current_publish_time"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
+                <TextView
+                    android:id="@+id/tv_current_shidu"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:background="@null"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
+            </LinearLayout>
+            <!-- 天气预警 -->
+            <LinearLayout
+                android:id="@+id/ll_current_alarm"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5.0dip"
+                android:layout_below="@id/ll_current_shidu">
 
-        <TextView
-            android:id="@+id/tv_current_publish_time"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    
-    <!-- 体感温度-->
-    <LinearLayout
-        android:id="@+id/ll_forecast_index"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_current_publish_time">
+                <TextView
+                    android:layout_width="70.0dip"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/forecast_alarm"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_index"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
+                <TextView
+                    android:id="@+id/tv_current_alarm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:background="@null"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
+            </LinearLayout>
+            <!-- 更新时间 -->
+            <LinearLayout
+                android:id="@+id/ll_update_time"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5.0dip"
+                android:layout_below="@id/ll_current_alarm">
 
-        <TextView
-            android:id="@+id/tv_forecast_index"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 穿衣指数-->
-    <LinearLayout
-        android:id="@+id/ll_forecast_index_d"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_index" >
+                <TextView
+                    android:layout_width="70.0dip"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/forecast_current_update_time"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_index_d"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
+                <TextView
+                    android:id="@+id/tv_update_time"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:background="@null"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_forecast_index_d"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 48小时体感温度-->
-    <LinearLayout
-        android:id="@+id/ll_forecast_index48"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_index_d">
+            <!-- 感冒指数 -->
+            <LinearLayout
+                android:id="@+id/ll_index"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5.0dip"
+                android:layout_below="@id/ll_update_time">
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_index48"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
+                <TextView
+                    android:layout_width="70.0dip"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="指数"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
 
-        <TextView
-            android:id="@+id/tv_forecast_index48"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 48小时穿衣指数-->
-    <LinearLayout
-        android:id="@+id/ll_forecast_index48_d"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_index48">
+                <TextView
+                    android:id="@+id/tv_index"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:background="@null"
+                    android:textColor="@color/white_color"
+                    android:textSize="14.0dip" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
 
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_index48_d"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-
-        <TextView
-            android:id="@+id/tv_forecast_index48_d"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 紫外线指数-->
-    <LinearLayout
-        android:id="@+id/ll_forecast_uv"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_index48_d">
-
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_uv"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-
-        <TextView
-            android:id="@+id/tv_forecast_index_uv"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 48小时紫外线指数 -->
-    <LinearLayout
-        android:id="@+id/ll_forecast_uv48"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_uv">
-
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_uv48"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-
-        <TextView
-            android:id="@+id/tv_forecast_index48_uv"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 洗车指数 -->
-    <LinearLayout
-        android:id="@+id/ll_forecast_index_xc"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_uv48">
-
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_index_xc"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-
-        <TextView
-            android:id="@+id/tv_forecast_index_xc"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 出游指数 -->
-    <LinearLayout
-        android:id="@+id/ll_forecast_index_tr"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_index_xc">
-
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_index_tr"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-
-        <TextView
-            android:id="@+id/tv_forecast_index_tr"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 舒适指数 -->
-    <LinearLayout
-        android:id="@+id/ll_forecast_index_co"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_index_tr">
-
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_index_co"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-
-        <TextView
-            android:id="@+id/tv_forecast_index_co"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 晨练指数-->
-    <LinearLayout
-        android:id="@+id/ll_forecast_index_cl"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_index_co">
-
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_index_cl"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-
-        <TextView
-            android:id="@+id/tv_forecast_index_cl"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 晾晒指数-->
-    <LinearLayout
-        android:id="@+id/ll_forecast_index_ls"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_index_cl">
-
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_index_ls"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-
-        <TextView
-            android:id="@+id/tv_forecast_index_ls"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    <!-- 感冒指数-->
-    <LinearLayout
-        android:id="@+id/ll_forecast_index_ag"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5.0dip"
-        android:layout_below="@id/ll_forecast_index_ls">
-
-        <TextView
-            android:layout_width="70.0dip"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/forecast_index_ag"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-
-        <TextView
-            android:id="@+id/tv_forecast_index_ag"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5.0dip"
-            android:background="@null"
-            android:textColor="@color/white_color"
-            android:textSize="14.0dip" />
-    </LinearLayout>
-    
-    <!-- 未来天气预报 -->
-    </RelativeLayout>
-</ScrollView>
-    
 </com.ggcoke.weatherdemo.view.ForecastLayout>
