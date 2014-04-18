@@ -51,7 +51,12 @@ public class MainFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.main_fragment, group, false);
-		
+		initView(view);
+        String[] cityInfos = MySharedPreferencesEdit.getInstance(getActivity()).getCityCodes().split("-");
+        ForecastLayout layout = listViews.get(0);
+        layout.initView(cityInfos[0]);
+        changeIcon(0);
+        setCityWeather(layout, cityInfos[0]);
 		return view;
 	}
 	
@@ -77,8 +82,7 @@ public class MainFragment extends Fragment {
 	}
 
     private void setCityWeather(ForecastLayout view, String cityInfo) {
-        String cityCode = cityInfo.split("_")[1];
-        view.setWeatherInfo(cityCode);
+        view.setWeatherInfo(cityInfo);
     }
 
     private void changeIcon(int position) {

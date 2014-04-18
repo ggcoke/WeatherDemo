@@ -51,7 +51,7 @@ public class LeftSlideAdapter extends BaseAdapter {
 	}
 
 	private TextView getGenericView() {
-		AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 48);
+		AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 80);
 		TextView textView = new TextView(context);
 		textView.setLayoutParams(lp);
 		textView.setTextSize(16);

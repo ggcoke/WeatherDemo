@@ -10,6 +10,8 @@ public class MyConstants {
 	public static final String WEATHER_FORECAST = "http://m.weather.com.cn/data/";
 	public static final String WEATHER_SK = "http://www.weather.com.cn/data/sk/";
 	public static final String WEATHER_CITYINFO = "http://www.weather.com.cn/data/cityinfo/";
+
+    public static final String WEATHER_LETV_URL = "http://115.182.94.28/iptv/api/box/newWeatherinfo.json?city=";
 	
 	public static final String ERROR_INVALIDED_REQUEST = "bad_request";
 }

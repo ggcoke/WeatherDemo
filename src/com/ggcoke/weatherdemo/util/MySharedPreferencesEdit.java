@@ -31,7 +31,7 @@ public class MySharedPreferencesEdit {
 	}
 	public String getCityCodes() {
 //		return sPreferences.getString("CityCodes", null);
-        return "朝阳_101010300-藁城_101090115";
+        return "河北_石家庄_正定-北京";
 	}
 	
 	public void setLastUpdateTime(long LastUpdateTime) {

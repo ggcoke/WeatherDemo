@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.ggcoke.weatherdemo.view.ForecastLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/content_bg"
     android:orientation="vertical" >
-
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
     <!-- 城市名称 -->
     <LinearLayout
         android:id="@+id/ll_city_name"
@@ -43,7 +48,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_city_name">
 
         <TextView
             android:layout_width="70.0dip"
@@ -72,7 +78,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_city_code">
 
         <TextView
             android:layout_width="70.0dip"
@@ -101,7 +108,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_current_temp">
 
         <TextView
             android:layout_width="70.0dip"
@@ -130,7 +138,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_current_sd">
 
         <TextView
             android:layout_width="70.0dip"
@@ -159,7 +168,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_current_wd">
 
         <TextView
             android:layout_width="70.0dip"
@@ -188,7 +198,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_current_ws">
 
         <TextView
             android:layout_width="70.0dip"
@@ -217,7 +228,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_current_wse">
 
         <TextView
             android:layout_width="70.0dip"
@@ -246,7 +258,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_current_publish_time">
 
         <TextView
             android:layout_width="70.0dip"
@@ -274,7 +287,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_index" >
 
         <TextView
             android:layout_width="70.0dip"
@@ -302,7 +316,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_index_d">
 
         <TextView
             android:layout_width="70.0dip"
@@ -330,7 +345,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_index48">
 
         <TextView
             android:layout_width="70.0dip"
@@ -358,7 +374,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_index48_d">
 
         <TextView
             android:layout_width="70.0dip"
@@ -386,7 +403,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_uv">
 
         <TextView
             android:layout_width="70.0dip"
@@ -414,7 +432,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_uv48">
 
         <TextView
             android:layout_width="70.0dip"
@@ -442,7 +461,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_index_xc">
 
         <TextView
             android:layout_width="70.0dip"
@@ -470,7 +490,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_index_tr">
 
         <TextView
             android:layout_width="70.0dip"
@@ -498,7 +519,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_index_co">
 
         <TextView
             android:layout_width="70.0dip"
@@ -526,7 +548,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_index_cl">
 
         <TextView
             android:layout_width="70.0dip"
@@ -554,7 +577,8 @@
         android:layout_marginRight="10.0dip"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5.0dip" >
+        android:padding="5.0dip"
+        android:layout_below="@id/ll_forecast_index_ls">
 
         <TextView
             android:layout_width="70.0dip"
@@ -575,6 +599,7 @@
     </LinearLayout>
     
     <!-- 未来天气预报 -->
+    </RelativeLayout>
+</ScrollView>
     
-    
-</LinearLayout>
+</com.ggcoke.weatherdemo.view.ForecastLayout>
