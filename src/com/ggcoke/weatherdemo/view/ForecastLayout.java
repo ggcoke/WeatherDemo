@@ -1,13 +1,20 @@
 package com.ggcoke.weatherdemo.view;
 
 import com.ggcoke.weatherdemo.R;
+import com.ggcoke.weatherdemo.util.MyConstants;
 import com.ggcoke.weatherdemo.util.MySharedPreferencesEdit;
 import com.ggcoke.weatherdemo.util.NetworkUtil;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ForecastLayout extends LinearLayout{
 	private static final String LOG_TAG = ForecastLayout.class.getSimpleName();
@@ -78,7 +85,6 @@ public class ForecastLayout extends LinearLayout{
 		index_d = (TextView) findViewById(R.id.tv_forecast_index_d);
 		index48 = (TextView) findViewById(R.id.tv_forecast_index48);
 		index48_d = (TextView) findViewById(R.id.tv_forecast_index48_d);
-		
 		index_uv = (TextView) findViewById(R.id.tv_forecast_index_uv);
 		index48_uv = (TextView) findViewById(R.id.tv_forecast_index48_uv);
 		index_xc = (TextView) findViewById(R.id.tv_forecast_index_xc);
@@ -88,7 +94,43 @@ public class ForecastLayout extends LinearLayout{
 		index_ls = (TextView) findViewById(R.id.tv_forecast_index_ls);
 		index_ag = (TextView) findViewById(R.id.tv_forecast_index_ag);
 	}
-	
+
+    private void showWeatherCurrent(){
+        try {
+            JSONObject obj = new JSONObject(weatherCurrent).getJSONObject("weatherinfo");
+            currentCityName.setText(obj.getString("city"));
+            currentCityCode.setText(obj.getString("cityid"));
+            currentTemp.setText(obj.getString("temp"));
+            currentWD.setText(obj.getString("WD"));
+            currentWS.setText(obj.getString("WS"));
+            currentSD.setText(obj.getString("SD"));
+            currentWSE.setText(obj.getString("WSE"));
+            publishTime.setText(obj.getString("time"));
+        } catch (JSONException e) {
+            Toast.makeText(mContext, "解析实时天气数据失败，请重试", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void showWeatherIndex() {
+        try {
+            JSONObject obj = new JSONObject(weatherIndex).getJSONObject("weatherinfo");
+            index.setText(obj.getString("index"));
+            index_d.setText(obj.getString("index_d"));
+            index48.setText(obj.getString("index48"));
+            index48_d.setText(obj.getString("index48_d"));
+            index_uv.setText(obj.getString("index_uv"));
+            index48_uv.setText(obj.getString("index48_uv"));
+            index_xc.setText(obj.getString("index_xc"));
+            index_tr.setText(obj.getString("index_tr"));
+            index_co.setText(obj.getString("index_co"));
+            index_cl.setText(obj.getString("index_cl"));
+            index_ls.setText(obj.getString("index_ls"));
+            index_ag.setText(obj.getString("index_ag"));
+        } catch (JSONException e) {
+            Toast.makeText(mContext, "解析天气指数数据失败，请重试", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 	public void setWeatherInfo(final String cityCode) {
 		weatherCurrent = MySharedPreferencesEdit.getInstance(mContext).getWeatherInfoByCityCode(cityCode);
 		if (null != weatherCurrent && weatherCurrent.length() > 0) {
@@ -101,7 +143,33 @@ public class ForecastLayout extends LinearLayout{
 		}
 		
 		if (NetworkUtil.netWorkAvilable(mContext)) {
-			
+            AsyncHttpClient clientCurrentWeather = new AsyncHttpClient();
+            clientCurrentWeather.get(MyConstants.WEATHER_SK + cityCode + ".html", new JsonHttpResponseHandler(){
+                @Override
+                public void onSuccess(JSONObject response) {
+                    MySharedPreferencesEdit.getInstance(mContext).setWeatherInfoWithCityCode(cityCode, response.toString());
+                    super.onSuccess(response);
+                }
+
+                @Override
+                public void onFailure(Throwable error) {
+                    Toast.makeText(mContext, "获取实时天气情况失败，请重试", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            AsyncHttpClient clientCurrentIndex = new AsyncHttpClient();
+            clientCurrentIndex.get(MyConstants.WEATHER_FORECAST + cityCode + ".html", new JsonHttpResponseHandler(){
+                @Override
+                public void onSuccess(JSONObject response) {
+                    MySharedPreferencesEdit.getInstance(mContext).setWeatherIndexWithCityCode(cityCode, response.toString());
+                    super.onSuccess(response);
+                }
+
+                @Override
+                public void onFailure(Throwable error) {
+                    Toast.makeText(mContext, "获取天气指数失败，请重试", Toast.LENGTH_SHORT).show();
+                }
+            });
 		}
 	}
 }

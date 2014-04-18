@@ -30,7 +30,8 @@ public class MySharedPreferencesEdit {
 		editor.putString("CityCodes", CityCodes).commit();
 	}
 	public String getCityCodes() {
-		return sPreferences.getString("CityCodes", null);
+//		return sPreferences.getString("CityCodes", null);
+        return "朝阳_101010300-藁城_101090115";
 	}
 	
 	public void setLastUpdateTime(long LastUpdateTime) {

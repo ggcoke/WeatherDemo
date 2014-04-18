@@ -16,6 +16,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class MainFragment extends Fragment {
@@ -31,6 +32,9 @@ public class MainFragment extends Fragment {
 		public void onPageSelected(int position) {
 			ForecastLayout view = listViews.get(position);
 			String cityInfo = cityList.get(position);
+            view.initView(cityInfo);
+            changeIcon(position);
+            setCityWeather(view, cityInfo);
 		}
 		
 		@Override
@@ -69,6 +73,27 @@ public class MainFragment extends Fragment {
 	
 	private void getCities() {
 		String[] cityInfos = MySharedPreferencesEdit.getInstance(getActivity()).getCityCodes().split("-");
-		cityList = Arrays.asList(cityInfos);
+        cityList = Arrays.asList(cityInfos);
 	}
+
+    private void setCityWeather(ForecastLayout view, String cityInfo) {
+        String cityCode = cityInfo.split("_")[1];
+        view.setWeatherInfo(cityCode);
+    }
+
+    private void changeIcon(int position) {
+        llImage.removeAllViewsInLayout();
+        for(int i =0;i<listViews.size();i++) {
+            ImageView imageView = new ImageView(getActivity());
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(10, 0, 0, 0);
+            imageView.setLayoutParams(layoutParams);
+            if(i==position) {
+                imageView.setImageResource(R.drawable.img_du_pressed);
+            } else {
+                imageView.setImageResource(R.drawable.img_du_normal);
+            }
+            llImage.addView(imageView);
+        }
+    }
 }
