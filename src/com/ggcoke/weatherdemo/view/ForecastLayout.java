@@ -18,9 +18,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ForecastLayout extends LinearLayout{
-	private static final String LOG_TAG = ForecastLayout.class.getSimpleName();
-	
-	private Context mContext;
+    private static final String LOG_TAG = ForecastLayout.class.getSimpleName();
+    
+    private Context mContext;
     private String mCity;
     private String weatherInfo;
 
@@ -33,14 +33,14 @@ public class ForecastLayout extends LinearLayout{
     private TextView currentAlarm;
     private TextView index;
 
-	public ForecastLayout(final Context context, AttributeSet attrs) {
-		super(context, attrs);
-		this.mContext = context;
-	}
+    public ForecastLayout(final Context context, AttributeSet attrs) {
+        super(context, attrs);
+        this.mContext = context;
+    }
 
-	public void initView(String city) {
+    public void initView(String city) {
         mCity = city;
-		// 初始化控件
+        // 初始化控件
         tvCityName = (TextView) findViewById(R.id.tv_city_name);
         currentWD = (TextView) findViewById(R.id.tv_current_wendu);
         currentFX = (TextView) findViewById(R.id.tv_current_fengxiang);
@@ -49,7 +49,7 @@ public class ForecastLayout extends LinearLayout{
         currentUpdateTime = (TextView) findViewById(R.id.tv_update_time);
         currentAlarm = (TextView) findViewById(R.id.tv_current_alarm);
         index = (TextView) findViewById(R.id.tv_index);
-	}
+    }
 
     private void showWeather(){
         try {
@@ -79,13 +79,13 @@ public class ForecastLayout extends LinearLayout{
         }
     }
 
-	public void setWeatherInfo(final String city) {
+    public void setWeatherInfo(final String city) {
         weatherInfo = MySharedPreferencesEdit.getInstance(mContext).getWeatherInfoByCityCode(city);
-		if (null != weatherInfo && weatherInfo.length() > 0) {
+        if (null != weatherInfo && weatherInfo.length() > 0) {
             showWeather();
-		}
-		
-		if (NetworkUtil.netWorkAvilable(mContext)) {
+        }
+        
+        if (NetworkUtil.netWorkAvilable(mContext)) {
             AsyncHttpClient clientCurrentWeather = new AsyncHttpClient();
             clientCurrentWeather.get(MyConstants.WEATHER_LETV_URL + city, new JsonHttpResponseHandler(){
                 @Override
@@ -99,6 +99,6 @@ public class ForecastLayout extends LinearLayout{
                     Toast.makeText(mContext, "获取实时天气情况失败，请重试", Toast.LENGTH_SHORT).show();
                 }
             });
-		}
-	}
+        }
+    }
 }

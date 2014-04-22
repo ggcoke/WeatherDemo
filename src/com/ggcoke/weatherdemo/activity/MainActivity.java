@@ -1,5 +1,6 @@
 package com.ggcoke.weatherdemo.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -14,25 +15,29 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.ggcoke.weatherdemo.R;
+import com.ggcoke.weatherdemo.db.DBHelper;
 import com.ggcoke.weatherdemo.fragment.LeftSlideFragment;
 import com.ggcoke.weatherdemo.fragment.MainFragment;
+import com.ggcoke.weatherdemo.util.MyConstants;
 import com.ggcoke.weatherdemo.util.MySharedPreferencesEdit;
 
 public class MainActivity extends SherlockFragmentActivity {
-	private static final String LOG_TAG = MainActivity.class.getSimpleName();
-	private DrawerLayout mDrawerLayout;
-	private ActionBarDrawerToggle mDrawerToggle;
-	private CharSequence mDrawerTitle;
-	private CharSequence mTitle;
-	private RelativeLayout mRelativeLayout;
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private CharSequence mDrawerTitle;
+    private CharSequence mTitle;
+    private RelativeLayout mRelativeLayout;
     private MainFragment mainFragment;
-	private LeftSlideFragment mLeftSlideFragment;
+    private LeftSlideFragment mLeftSlideFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        DBHelper dbHelper = new DBHelper(MainActivity.this);
+        dbHelper.getReadableDatabase();
         mainFragment = new MainFragment();
         if(MySharedPreferencesEdit.getInstance(this).getCityCodes() != null) {
             FragmentManager fm2 = getSupportFragmentManager();
@@ -40,7 +45,8 @@ public class MainActivity extends SherlockFragmentActivity {
             ft2.replace(R.id.contentFrameLayout, mainFragment);
             ft2.commitAllowingStateLoss();
         } else {
-            // 跳转到设置城市的Activity
+            Intent intent = new Intent(this, CitySelectorActivity.class);
+            startActivityForResult(intent, MyConstants.INTENT_CODE_SET_CITY);
         }
 
         mTitle = mDrawerTitle = getTitle();
@@ -106,5 +112,13 @@ public class MainActivity extends SherlockFragmentActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (MyConstants.INTENT_CODE_SET_CITY != requestCode || null == data) {
+            return;
+        }
+
     }
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_none">0dip</dimen>
+    <dimen name="margin_tiny">1.0dip</dimen>
+    <dimen name="margin_mini">3.0dip</dimen>
+    <dimen name="margin_small">5.0dip</dimen>
+    <dimen name="margin_medium">10.0dip</dimen>
+    <dimen name="margin_large">15.0dip</dimen>
+    <dimen name="margin_xlarge">20.0dip</dimen>
+
+    <dimen name="padding_left_slide_city_item">32dip</dimen>
+
+    <dimen name="text_size_small">10.0dip</dimen>
+    <dimen name="text_size_medium">15.0dip</dimen>
+    <dimen name="text_size_large">20.0dip</dimen>
+</resources>

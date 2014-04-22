@@ -27,4 +27,8 @@
     <string name="today_index_gj">逛街指数</string>
     <string name="today_index_ls">晾晒指数</string>
     <string name="today_index_ys">雨伞指数</string>
+
+    <string name="city_filter_hint">输入城市名称</string>
+    <string name="city_hot_city">热门城市</string>
+    <string name="city_filter_noresult">没有找到对应城市</string>
 </resources>

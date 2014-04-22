@@ -20,66 +20,66 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class MainFragment extends Fragment {
-	private ViewPager viewPager;
-	private ArrayList<ForecastLayout> listViews = new ArrayList<ForecastLayout>();
-	private LinearLayout llImage;
-	private ViewPagerAdapter adapter;
-	private List<String> cityList;
-	
-	private OnPageChangeListener onPageChangeListener = new OnPageChangeListener() {
-		
-		@Override
-		public void onPageSelected(int position) {
-			ForecastLayout view = listViews.get(position);
-			String cityInfo = cityList.get(position);
+    private ViewPager viewPager;
+    private ArrayList<ForecastLayout> listViews = new ArrayList<ForecastLayout>();
+    private LinearLayout llImage;
+    private ViewPagerAdapter adapter;
+    private List<String> cityList;
+    
+    private OnPageChangeListener onPageChangeListener = new OnPageChangeListener() {
+        
+        @Override
+        public void onPageSelected(int position) {
+            ForecastLayout view = listViews.get(position);
+            String cityInfo = cityList.get(position);
             view.initView(cityInfo);
             changeIcon(position);
             setCityWeather(view, cityInfo);
-		}
-		
-		@Override
-		public void onPageScrolled(int arg0, float arg1, int arg2) {
-			return;
-		}
-		
-		@Override
-		public void onPageScrollStateChanged(int arg0) {
-			
-		}
-	};
-	
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.main_fragment, group, false);
-		initView(view);
+        }
+        
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+            return;
+        }
+        
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+            
+        }
+    };
+    
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.main_fragment, group, false);
+        initView(view);
         String[] cityInfos = MySharedPreferencesEdit.getInstance(getActivity()).getCityCodes().split("-");
         ForecastLayout layout = listViews.get(0);
         layout.initView(cityInfos[0]);
         changeIcon(0);
         setCityWeather(layout, cityInfos[0]);
-		return view;
-	}
-	
-	private void initView(View v) {
-		llImage = (LinearLayout) v.findViewById(R.id.ll_img_content);
-		viewPager = (ViewPager) v.findViewById(R.id.viewpager_forecast_content);
-		getCities();
-		
-		for (int i = 0; i < cityList.size(); i++) {
-			ForecastLayout view = (ForecastLayout) View.inflate(getActivity(), R.layout.forecast, null);
-			listViews.add(view);
-		}
-		
-		adapter = new ViewPagerAdapter(listViews);
-		viewPager.setAdapter(adapter);
-		viewPager.setOnPageChangeListener(onPageChangeListener);
-		
-	}
-	
-	private void getCities() {
-		String[] cityInfos = MySharedPreferencesEdit.getInstance(getActivity()).getCityCodes().split("-");
+        return view;
+    }
+    
+    private void initView(View v) {
+        llImage = (LinearLayout) v.findViewById(R.id.ll_img_content);
+        viewPager = (ViewPager) v.findViewById(R.id.viewpager_forecast_content);
+        getCities();
+        
+        for (int i = 0; i < cityList.size(); i++) {
+            ForecastLayout view = (ForecastLayout) View.inflate(getActivity(), R.layout.forecast, null);
+            listViews.add(view);
+        }
+        
+        adapter = new ViewPagerAdapter(listViews);
+        viewPager.setAdapter(adapter);
+        viewPager.setOnPageChangeListener(onPageChangeListener);
+        
+    }
+    
+    private void getCities() {
+        String[] cityInfos = MySharedPreferencesEdit.getInstance(getActivity()).getCityCodes().split("-");
         cityList = Arrays.asList(cityInfos);
-	}
+    }
 
     private void setCityWeather(ForecastLayout view, String cityInfo) {
         view.setWeatherInfo(cityInfo);
