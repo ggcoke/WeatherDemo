@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.ggcoke.weatherdemo.R;
 import com.ggcoke.weatherdemo.adapter.ViewPagerAdapter;
-import com.ggcoke.weatherdemo.util.MySharedPreferencesEdit;
+import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
 import com.ggcoke.weatherdemo.view.ForecastLayout;
 
 import android.os.Bundle;
@@ -52,7 +52,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment, group, false);
         initView(view);
-        String[] cityInfos = MySharedPreferencesEdit.getInstance(getActivity()).getCityCodes().split("-");
+        String[] cityInfos = WeatherSharedPreferencesEdit.getInstance(getActivity()).getSelectedCity().split("-");
         ForecastLayout layout = listViews.get(0);
         layout.initView(cityInfos[0]);
         changeIcon(0);
@@ -77,7 +77,7 @@ public class MainFragment extends Fragment {
     }
     
     private void getCities() {
-        String[] cityInfos = MySharedPreferencesEdit.getInstance(getActivity()).getCityCodes().split("-");
+        String[] cityInfos = WeatherSharedPreferencesEdit.getInstance(getActivity()).getSelectedCity().split("-");
         cityList = Arrays.asList(cityInfos);
     }
 

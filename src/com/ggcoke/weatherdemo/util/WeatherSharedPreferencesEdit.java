@@ -3,36 +3,32 @@ package com.ggcoke.weatherdemo.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class MySharedPreferencesEdit {
-    private static final String LOG_TAG = MySharedPreferencesEdit.class.getSimpleName();
+public class WeatherSharedPreferencesEdit {
+    private static final String LOG_TAG = WeatherSharedPreferencesEdit.class.getSimpleName();
     private static SharedPreferences sPreferences;
     private SharedPreferences.Editor editor;
-    private static MySharedPreferencesEdit _instance = null;
+    private static WeatherSharedPreferencesEdit _instance = null;
     
-    private MySharedPreferencesEdit(Context ctx) {
+    private WeatherSharedPreferencesEdit(Context ctx) {
         sPreferences = ctx.getSharedPreferences("MySharedPreferencesEdit", Context.MODE_PRIVATE);
         editor = sPreferences.edit();
     }
     
-    public static MySharedPreferencesEdit getInstance(Context ctx) {
+    public static WeatherSharedPreferencesEdit getInstance(Context ctx) {
         if (null == _instance) {
-            _instance = new MySharedPreferencesEdit(ctx);
+            _instance = new WeatherSharedPreferencesEdit(ctx);
         }
         
         return _instance;
     }
-    
-    /**
-     * 存储用户选择的城市列表，格式为code1_name1-code2_name2
-     * @param CityCodes
-     */
-    public void setCityCodes(String CityCodes) {
-        editor.putString("CityCodes", CityCodes).commit();
+
+
+    public void storeSelectedCity(String city) {
+        editor.putString("CitySelected", city).commit();
     }
-    public String getCityCodes() {
-//        return sPreferences.getString("CityCodes", null);
+    public String getSelectedCity() {
+        return sPreferences.getString("CitySelected", null);
 //        return "河北_石家庄_正定-北京";
-        return null;
     }
 
     

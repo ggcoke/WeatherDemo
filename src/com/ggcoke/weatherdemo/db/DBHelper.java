@@ -58,9 +58,14 @@ public class DBHelper extends SQLiteOpenHelper {
             while ((line = br.readLine()) != null) {
                 db.execSQL(line);
             }
-            is.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

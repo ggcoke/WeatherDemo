@@ -18,8 +18,8 @@ import com.ggcoke.weatherdemo.R;
 import com.ggcoke.weatherdemo.db.DBHelper;
 import com.ggcoke.weatherdemo.fragment.LeftSlideFragment;
 import com.ggcoke.weatherdemo.fragment.MainFragment;
-import com.ggcoke.weatherdemo.util.MyConstants;
-import com.ggcoke.weatherdemo.util.MySharedPreferencesEdit;
+import com.ggcoke.weatherdemo.util.WeatherConstants;
+import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
 
 public class MainActivity extends SherlockFragmentActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -39,14 +39,16 @@ public class MainActivity extends SherlockFragmentActivity {
         DBHelper dbHelper = new DBHelper(MainActivity.this);
         dbHelper.getReadableDatabase();
         mainFragment = new MainFragment();
-        if(MySharedPreferencesEdit.getInstance(this).getCityCodes() != null) {
+        if(WeatherSharedPreferencesEdit.getInstance(this).getSelectedCity() != null) {
+            System.out.println(WeatherSharedPreferencesEdit.getInstance(this).getSelectedCity());
             FragmentManager fm2 = getSupportFragmentManager();
             FragmentTransaction ft2 = fm2.beginTransaction();
             ft2.replace(R.id.contentFrameLayout, mainFragment);
             ft2.commitAllowingStateLoss();
         } else {
             Intent intent = new Intent(this, CitySelectorActivity.class);
-            startActivityForResult(intent, MyConstants.INTENT_CODE_SET_CITY);
+            startActivity(intent);
+            finish();
         }
 
         mTitle = mDrawerTitle = getTitle();
@@ -112,13 +114,5 @@ public class MainActivity extends SherlockFragmentActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (MyConstants.INTENT_CODE_SET_CITY != requestCode || null == data) {
-            return;
-        }
-
     }
 }

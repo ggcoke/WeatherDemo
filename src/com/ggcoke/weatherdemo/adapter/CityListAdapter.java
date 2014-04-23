@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ggcoke.weatherdemo.R;
+import com.ggcoke.weatherdemo.util.WeatherConstants;
+import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
 
 import java.util.List;
 
@@ -47,7 +49,7 @@ public class CityListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
+    public View getView(final int position, View view, ViewGroup viewGroup) {
         String[] infos = cities.get(position).split("_");
 
         CityItemViewHolder holder = null;

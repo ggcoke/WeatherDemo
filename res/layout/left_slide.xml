@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="210.0dip"
+    android:layout_width="@dimen/left_slide_width"
     android:layout_height="fill_parent"
     android:background="@color/content_bg" >
 
   <LinearLayout
-        android:layout_width="210.0dip"
+        android:layout_width="@dimen/left_slide_width"
         android:layout_height="fill_parent"
         android:background="@color/content_bg"
         android:orientation="vertical" >
@@ -15,10 +15,10 @@
             android:layout_height="wrap_content"
             android:background="@color/title_bg"
             android:gravity="center_vertical"
-            android:padding="5.0dip"
-            android:text="功能菜单"
+            android:padding="@dimen/padding_medium"
+            android:text="@string/left_slide_menu"
             android:textColor="#eeffffff"
-            android:textSize="16.0dip" />
+            android:textSize="@dimen/text_size_large" />
 
         <TextView
             android:id="@+id/setting"
@@ -27,10 +27,10 @@
             android:background="@drawable/list_selector"
             android:drawableLeft="@drawable/more_ic_setting"
             android:gravity="center_vertical"
-            android:padding="8.0dip"
-            android:text="\u0020设置"
+            android:padding="@dimen/padding_medium"
+            android:text="@string/left_slide_menu_setting"
             android:textColor="#B1BCCA"
-            android:textSize="16.0dip" />
+            android:textSize="@dimen/text_size_medium" />
 
         <ImageView
             android:layout_width="fill_parent"
@@ -44,10 +44,10 @@
             android:background="@drawable/list_selector"
             android:drawableLeft="@drawable/more_ic_theme"
             android:gravity="center_vertical"
-            android:padding="8.0dip"
-            android:text="\u0020皮肤"
+            android:padding="@dimen/padding_medium"
+            android:text="@string/left_slide_menu_skin"
             android:textColor="#B1BCCA"
-            android:textSize="16.0dip" />
+            android:textSize="@dimen/text_size_medium" />
 
         <ImageView
             android:layout_width="fill_parent"
@@ -56,35 +56,52 @@
 
 
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/title_bg"
-            android:padding="5.0dip"
-            android:text="城市列表"
-            android:textColor="#eeffffff"
-            android:textSize="16.0dip" />
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:background="@color/title_bg"
+          android:padding="@dimen/padding_medium">
 
-        <ListView
-            android:id="@+id/citylistView"
-            android:layout_width="210.0dip"
-            android:layout_height="wrap_content"
-            android:background="@color/content_bg"
-            android:divider="@android:color/black"
-            android:dividerHeight="1px"
-            android:cacheColorHint="@null"
-            android:listSelector="@null" />
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/left_slide_citylist"
+              android:textColor="#eeffffff"
+              android:textSize="@dimen/text_size_large"
+              android:layout_weight="1" />
+          <ImageButton
+              android:id="@+id/btn_left_slide_city_setting"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginRight="@dimen/margin_small"
+              android:background="@drawable/setting_edit"/>
+      </LinearLayout>
+
+      <ListView
+          android:id="@+id/citylistView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/content_bg"
+          android:divider="@android:color/black"
+          android:dividerHeight="1px"
+          android:cacheColorHint="@null"
+          android:listSelector="@null" />
+      <ImageView
+          android:layout_width="fill_parent"
+          android:layout_height="1.0px"
+          android:background="@color/black_color" />
+      <ImageView
+          android:id="@+id/iv_left_slide_city_add"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:background="@drawable/setting_add"/>
 
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="1.0px"
             android:background="@color/black_color" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="4.0"
-            android:background="@color/content_bg" />
     </LinearLayout>
 
 </RelativeLayout>

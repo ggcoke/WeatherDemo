@@ -7,8 +7,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ggcoke.weatherdemo.R;
-import com.ggcoke.weatherdemo.util.MyConstants;
-import com.ggcoke.weatherdemo.util.MySharedPreferencesEdit;
+import com.ggcoke.weatherdemo.util.WeatherConstants;
+import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
 import com.ggcoke.weatherdemo.util.NetworkUtil;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -80,17 +80,21 @@ public class ForecastLayout extends LinearLayout{
     }
 
     public void setWeatherInfo(final String city) {
-        weatherInfo = MySharedPreferencesEdit.getInstance(mContext).getWeatherInfoByCityCode(city);
+        weatherInfo = WeatherSharedPreferencesEdit.getInstance(mContext).getWeatherInfoByCityCode(city);
         if (null != weatherInfo && weatherInfo.length() > 0) {
             showWeather();
         }
         
         if (NetworkUtil.netWorkAvilable(mContext)) {
             AsyncHttpClient clientCurrentWeather = new AsyncHttpClient();
-            clientCurrentWeather.get(MyConstants.WEATHER_LETV_URL + city, new JsonHttpResponseHandler(){
+            clientCurrentWeather.get(WeatherConstants.WEATHER_LETV_URL + city, new JsonHttpResponseHandler(){
                 @Override
                 public void onSuccess(JSONObject response) {
-                    MySharedPreferencesEdit.getInstance(mContext).setWeatherInfoWithCityCode(city, response.toString());
+                    WeatherSharedPreferencesEdit.getInstance(mContext).setWeatherInfoWithCityCode(city, response.toString());
+                    weatherInfo = WeatherSharedPreferencesEdit.getInstance(mContext).getWeatherInfoByCityCode(city);
+                    if (null != weatherInfo && weatherInfo.length() > 0) {
+                        showWeather();
+                    }
                     super.onSuccess(response);
                 }
 

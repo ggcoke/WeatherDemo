@@ -1,6 +1,13 @@
 <resources>
 
     <string name="app_name">天气应用</string>
+    <string name="left_slide_menu">功能菜单</string>
+    <string name="left_slide_menu_setting">\u0020设置</string>
+    <string name="left_slide_menu_skin">\u0020皮肤</string>
+    <string name="left_slide_citylist">城市列表</string>
+    <string name="left_slide_city_setting">编辑</string>
+    <string name="left_slide_city_complete">完成</string>
+    <string name="left_slide_city_remove">删除</string>
 
     <string name="drawer_open">打开</string>
     <string name="drawer_close">关闭</string>
