@@ -1,7 +1,6 @@
 package com.ggcoke.weatherdemo.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -17,6 +15,7 @@ import android.widget.TextView;
 
 import com.ggcoke.weatherdemo.R;
 import com.ggcoke.weatherdemo.adapter.CityListAdapter;
+import com.ggcoke.weatherdemo.adapter.HotCityAdapter;
 import com.ggcoke.weatherdemo.db.DBHelper;
 import com.ggcoke.weatherdemo.util.WeatherConstants;
 import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
@@ -38,29 +37,32 @@ public class CitySelectorActivity extends Activity {
     private CityListAdapter filterAdapter;
     private TextView filterResultNone;
     private List<String> cityData = new ArrayList<String>();
-
+    private HotCityAdapter hotCityAdapter;
+    private List<String> hotCityData = new ArrayList<String>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.city_selector);
-        ArrayAdapter<String> hotCityAdapter = new ArrayAdapter<String>(
-                getApplicationContext(),
-                R.layout.item_gridview,
-                R.id.tv_item_hot_city);
+
         String cityInfo = WeatherSharedPreferencesEdit.getInstance(this).getHotCities();
-        String[] cities = cityInfo.split("_");
+        String[] cities = cityInfo.split("-");
+        String selectedCities = WeatherSharedPreferencesEdit.getInstance(this).getSelectedCity();
         for(String city : cities) {
-            hotCityAdapter.add(city);
+            if (hotCityData.contains(city) || (null != selectedCities && selectedCities.contains(city))) {
+            } else {
+                hotCityData.add(city);
+            }
         }
+
+        hotCityAdapter = new HotCityAdapter(CitySelectorActivity.this, hotCityData);
+        hotCities = (GridView) findViewById(R.id.gv_hot_city);
+        hotCities.setAdapter(hotCityAdapter);
 
         rlHotCity = (RelativeLayout) findViewById(R.id.rl_hot_city);
         rlFilterResult = (RelativeLayout) findViewById(R.id.rl_filter_result);
         rlHotCity.setVisibility(View.VISIBLE);
         rlFilterResult.setVisibility(View.GONE);
-
-        hotCities = (GridView) findViewById(R.id.gv_hot_city);
-        hotCities.setAdapter(hotCityAdapter);
 
         filterAdapter = new CityListAdapter(CitySelectorActivity.this, cityData);
         filterCities = (ListView) findViewById(R.id.lv_city_filter_result);
@@ -88,6 +90,22 @@ public class CitySelectorActivity extends Activity {
             }
         });
 
+        hotCities.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String currentCityList = WeatherSharedPreferencesEdit.getInstance(CitySelectorActivity.this).getSelectedCity();
+                if (null == currentCityList || currentCityList.length() == 0) {
+                    currentCityList = hotCityData.get(position);
+                } else {
+                    currentCityList += ("-" + hotCityData.get(position));
+                }
+
+                WeatherSharedPreferencesEdit.getInstance(CitySelectorActivity.this).storeSelectedCity(currentCityList);
+                setResult(WeatherConstants.INTENT_CODE_SUCCESS);
+                finish();
+            }
+        });
+
         filterCities.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -99,8 +117,7 @@ public class CitySelectorActivity extends Activity {
                 }
 
                 WeatherSharedPreferencesEdit.getInstance(CitySelectorActivity.this).storeSelectedCity(currentCityList);
-                Intent intent = new Intent(CitySelectorActivity.this, MainActivity.class);
-                startActivity(intent);
+                setResult(WeatherConstants.INTENT_CODE_SUCCESS);
                 finish();
             }
         });

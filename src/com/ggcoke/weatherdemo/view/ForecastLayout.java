@@ -105,4 +105,8 @@ public class ForecastLayout extends LinearLayout{
             });
         }
     }
+
+    public String getCity() {
+        return this.mCity;
+    }
 }

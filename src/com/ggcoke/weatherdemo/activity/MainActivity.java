@@ -47,8 +47,7 @@ public class MainActivity extends SherlockFragmentActivity {
             ft2.commitAllowingStateLoss();
         } else {
             Intent intent = new Intent(this, CitySelectorActivity.class);
-            startActivity(intent);
-            finish();
+            startActivityForResult(intent, WeatherConstants.INTENT_CODE_ADD_CITY);
         }
 
         mTitle = mDrawerTitle = getTitle();
@@ -74,6 +73,7 @@ public class MainActivity extends SherlockFragmentActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         mLeftSlideFragment = new LeftSlideFragment();
+        mLeftSlideFragment.setMainFragment(mainFragment);
         FragmentManager fm1 = getSupportFragmentManager();
         FragmentTransaction ft1 = fm1.beginTransaction();
         ft1.replace(R.id.drawerLayout, mLeftSlideFragment);
@@ -114,5 +114,27 @@ public class MainActivity extends SherlockFragmentActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (WeatherConstants.INTENT_CODE_SUCCESS == resultCode) {
+            String selectedCitis = WeatherSharedPreferencesEdit.getInstance(this).getSelectedCity();
+            if (null != selectedCitis) {
+                String[] cities = selectedCitis.split("-");
+                if (1 == cities.length) {
+                    FragmentManager fm2 = getSupportFragmentManager();
+                    FragmentTransaction ft2 = fm2.beginTransaction();
+                    ft2.replace(R.id.contentFrameLayout, mainFragment);
+                    ft2.commitAllowingStateLoss();
+                } else {
+                    mainFragment.addCity(cities[cities.length - 1]);
+                }
+            } else {
+                MainActivity.this.finish();
+            }
+
+            mLeftSlideFragment.refreshCityList();
+        }
     }
 }

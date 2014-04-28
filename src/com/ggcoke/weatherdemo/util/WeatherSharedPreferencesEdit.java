@@ -28,7 +28,6 @@ public class WeatherSharedPreferencesEdit {
     }
     public String getSelectedCity() {
         return sPreferences.getString("CitySelected", null);
-//        return "河北_石家庄_正定-北京";
     }
 
     
@@ -58,7 +57,6 @@ public class WeatherSharedPreferencesEdit {
     }
 
     public String getHotCities() {
-//        return sPreferences.getString("hot", null);
-        return "北京_上海_天津_重庆_长沙_长春_成都_福州_广州_贵阳_呼和浩特_哈尔滨_合肥_杭州_海口_济南_昆明_拉萨_兰州_南宁_南京_南昌";
+        return "北京-上海-天津-重庆-湖南_长沙-吉林_长春-四川_成都-福建_福州-广东_广州-贵州_贵阳-内蒙古_呼和浩特-黑龙江_哈尔滨-安徽_合肥-浙江_杭州-海南_海口-山东_济南-云南_昆明-西藏_拉萨-甘肃_兰州-广西_南宁-江苏_南京-江西_南昌";
     }
 }

@@ -1,17 +1,12 @@
 package com.ggcoke.weatherdemo.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.ggcoke.weatherdemo.R;
@@ -21,6 +16,9 @@ import com.ggcoke.weatherdemo.util.EditableCity;
 import com.ggcoke.weatherdemo.util.WeatherConstants;
 import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LeftSlideFragment extends Fragment {
     private static final String LOG_TAG = LeftSlideFragment.class.getSimpleName();
 
@@ -28,8 +26,9 @@ public class LeftSlideFragment extends Fragment {
     private ListView mCityListView;
     private List<EditableCity> mCityList = new ArrayList<EditableCity>();
     private ImageButton mBtnCitySetting;
-    private ImageView ivCityAdd;
+    private ImageButton mBtnCityAdd;
     private boolean editing = false;
+    private MainFragment mainFragment;
 
     private View.OnClickListener mCitySettingListener = new View.OnClickListener(){
         @Override
@@ -72,15 +71,26 @@ public class LeftSlideFragment extends Fragment {
             }
         }
 
-        ivCityAdd = (ImageView) v.findViewById(R.id.iv_left_slide_city_add);
-        ivCityAdd.setOnClickListener(mCityAddListener);
+        mBtnCityAdd = (ImageButton) v.findViewById(R.id.btn_left_slide_city_add);
+        mBtnCityAdd.setOnClickListener(mCityAddListener);
 
         mBtnCitySetting = (ImageButton) v.findViewById(R.id.btn_left_slide_city_setting);
         mBtnCitySetting.setOnClickListener(mCitySettingListener);
 
-        mListSwipAdapter = new ListSwipAdapter(getActivity(), mCityList);
+        mListSwipAdapter = new ListSwipAdapter(getActivity(), mCityList, mainFragment);
         mCityListView.setAdapter(mListSwipAdapter);
 
         return v;
+    }
+
+    public void refreshCityList() {
+        String[] cities = WeatherSharedPreferencesEdit.getInstance(getActivity()).getSelectedCity().split("-");
+        EditableCity city = new EditableCity(cities[cities.length - 1], false);
+        mCityList.add(city);
+        mListSwipAdapter.notifyDataSetChanged();
+    }
+
+    public void setMainFragment(MainFragment mainFragment) {
+        this.mainFragment = mainFragment;
     }
 }

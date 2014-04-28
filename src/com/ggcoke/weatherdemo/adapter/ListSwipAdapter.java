@@ -5,12 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ggcoke.weatherdemo.R;
+import com.ggcoke.weatherdemo.fragment.MainFragment;
 import com.ggcoke.weatherdemo.util.EditableCity;
 import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
 
@@ -23,10 +23,12 @@ public class ListSwipAdapter extends BaseAdapter {
     private static final String LOG_TAG = ListSwipAdapter.class.getSimpleName();
     private Context mContext;
     private List<EditableCity> mData;
+    private MainFragment mainFragment;
 
-    public ListSwipAdapter(Context context, List<EditableCity> data) {
+    public ListSwipAdapter(Context context, List<EditableCity> data, MainFragment mainFragment) {
         this.mContext = context;
         this.mData = data;
+        this.mainFragment = mainFragment;
     }
 
     @Override
@@ -52,10 +54,12 @@ public class ListSwipAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.tvCityItem = (TextView) view.findViewById(R.id.tv_left_slide_city_item);
             holder.btnRemove = (ImageButton) view.findViewById(R.id.btn_left_slide_city_remove);
+            holder.ivDivider = (ImageView) view.findViewById(R.id.iv_left_city_divider);
             holder.btnRemove.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    mData.remove(position);
+                    EditableCity delData = mData.remove(position);
+                    mainFragment.delCity(delData.getCityName());
                     StringBuilder sb = new StringBuilder();
                     for (EditableCity data : mData) {
                         sb.append(data.getCityName()).append("-");
@@ -90,6 +94,7 @@ public class ListSwipAdapter extends BaseAdapter {
     public class ViewHolder {
         public TextView tvCityItem;
         public ImageButton btnRemove;
+        public ImageView ivDivider;
     }
 
 

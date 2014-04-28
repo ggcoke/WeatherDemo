@@ -1,14 +1,5 @@
 package com.ggcoke.weatherdemo.fragment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import com.ggcoke.weatherdemo.R;
-import com.ggcoke.weatherdemo.adapter.ViewPagerAdapter;
-import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
-import com.ggcoke.weatherdemo.view.ForecastLayout;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -18,6 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.ggcoke.weatherdemo.R;
+import com.ggcoke.weatherdemo.adapter.ViewPagerAdapter;
+import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
+import com.ggcoke.weatherdemo.view.ForecastLayout;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainFragment extends Fragment {
     private ViewPager viewPager;
@@ -98,6 +98,33 @@ public class MainFragment extends Fragment {
                 imageView.setImageResource(R.drawable.img_du_normal);
             }
             llImage.addView(imageView);
+        }
+    }
+
+    public void delCity(String city) {
+        if (null != city && 0 != city.trim().length()) {
+            for (ForecastLayout view : listViews) {
+                if (view.getCity().equals(city)) {
+                    listViews.remove(view);
+                    adapter.notifyDataSetChanged();
+                    break;
+                }
+            }
+        } else {
+            getActivity().finish();
+        }
+    }
+
+    public void addCity(String city) {
+        if (null != city && 0 != city.trim().length()) {
+            ForecastLayout view = (ForecastLayout) View.inflate(getActivity(), R.layout.forecast, null);
+            view.initView(city);
+            view.setWeatherInfo(city);
+            getCities();
+            listViews.add(view);
+            adapter.notifyDataSetChanged();
+        } else {
+            getActivity().finish();
         }
     }
 }

@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:gravity="center">
+    android:layout_height="wrap_content">
 
+    <LinearLayout
+        android:id="@+id/ll_city_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/tv_left_slide_city_item"
         android:layout_width="@dimen/dimen_zero"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="@dimen/padding_medium"
+        android:layout_marginLeft="@dimen/margin_small"
         android:textSize="@dimen/text_size_large"
         android:textColor="@color/left_listview_tv"
-        android:gravity="center_vertical|left" />
+        android:gravity="center_vertical" />
     <ImageButton
         android:id="@+id/btn_left_slide_city_remove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginRight="@dimen/margin_medium"
-        android:background="@drawable/setting_delete"/>
-</LinearLayout>
+        android:background="@drawable/setting_delete"
+        android:visibility="visible"/>
+
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/iv_left_city_divider"
+        android:layout_below="@id/ll_city_item"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:background="@color/black_color"/>
+</RelativeLayout>
