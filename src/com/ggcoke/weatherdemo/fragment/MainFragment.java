@@ -1,5 +1,6 @@
 package com.ggcoke.weatherdemo.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -9,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.ggcoke.weatherdemo.R;
+import com.ggcoke.weatherdemo.activity.MainActivity;
 import com.ggcoke.weatherdemo.adapter.ViewPagerAdapter;
 import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
 import com.ggcoke.weatherdemo.view.ForecastLayout;
@@ -75,10 +78,32 @@ public class MainFragment extends Fragment {
         viewPager.setOnPageChangeListener(onPageChangeListener);
         
     }
+
+    private void resetView() {
+        listViews.clear();
+        getCities();
+
+        for (int i = 0; i < cityList.size(); i++) {
+            ForecastLayout view = (ForecastLayout) View.inflate(getActivity(), R.layout.forecast, null);
+            listViews.add(view);
+        }
+
+        ForecastLayout layout = listViews.get(0);
+        layout.initView(cityList.get(0));
+        setCityWeather(layout, cityList.get(0));
+    }
     
     private void getCities() {
-        String[] cityInfos = WeatherSharedPreferencesEdit.getInstance(getActivity()).getSelectedCity().split("-");
-        cityList = Arrays.asList(cityInfos);
+        String city = WeatherSharedPreferencesEdit.getInstance(getActivity()).getSelectedCity();
+        if (city != null && city.length() > 0) {
+            String[] cityInfos = city.split("-");
+            cityList = Arrays.asList(cityInfos);
+        } else {
+            Toast.makeText(getActivity(), R.string.city_auto_location_error, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
     }
 
     private void setCityWeather(ForecastLayout view, String cityInfo) {
@@ -103,12 +128,26 @@ public class MainFragment extends Fragment {
 
     public void delCity(String city) {
         if (null != city && 0 != city.trim().length()) {
-            for (ForecastLayout view : listViews) {
-                if (view.getCity().equals(city)) {
-                    listViews.remove(view);
-                    adapter.notifyDataSetChanged();
-                    break;
-                }
+//            for (ForecastLayout view : listViews) {
+//                if (view.getCity().equals(city)) {
+//                    listViews.remove(view);
+//                    break;
+//                }
+//            }
+            viewPager.setAdapter(null);
+
+            resetView();
+//            adapter.notifyDataSetChanged();
+
+            adapter.setList(listViews);
+            viewPager.setAdapter(adapter);
+            if (listViews.size() > 0) {
+                viewPager.setCurrentItem(0);
+                changeIcon(0);
+            } else {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         } else {
             getActivity().finish();
@@ -123,6 +162,8 @@ public class MainFragment extends Fragment {
             getCities();
             listViews.add(view);
             adapter.notifyDataSetChanged();
+            viewPager.setCurrentItem(listViews.size() - 1);
+            changeIcon(listViews.size() - 1);
         } else {
             getActivity().finish();
         }

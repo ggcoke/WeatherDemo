@@ -59,7 +59,6 @@ public class ListSwipAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
                     EditableCity delData = mData.remove(position);
-                    mainFragment.delCity(delData.getCityName());
                     StringBuilder sb = new StringBuilder();
                     for (EditableCity data : mData) {
                         sb.append(data.getCityName()).append("-");
@@ -70,6 +69,7 @@ public class ListSwipAdapter extends BaseAdapter {
                     } else {
                         WeatherSharedPreferencesEdit.getInstance(mContext).storeSelectedCity(null);
                     }
+                    mainFragment.delCity(delData.getCityName());
                     notifyDataSetChanged();
                 }
             });

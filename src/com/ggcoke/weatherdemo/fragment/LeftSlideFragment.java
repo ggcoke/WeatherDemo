@@ -37,6 +37,7 @@ public class LeftSlideFragment extends Fragment {
             if (editing) {
                 mBtnCitySetting.setBackground(getResources().getDrawable(R.drawable.setting_complete));
             } else {
+
                 mBtnCitySetting.setBackground(getResources().getDrawable(R.drawable.setting_edit));
             }
             for (EditableCity editableCity : mCityList) {
