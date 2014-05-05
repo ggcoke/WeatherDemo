@@ -86,7 +86,7 @@ public class CitySelectorActivity extends Activity {
         locationClient = new LocationClient(getApplicationContext());
         locationClient.setAK(WeatherConstants.BD_LOCATION_KEY);
         locationClient.registerLocationListener(locationListener);
-        location2();
+        location();
 
         cityFilter = (TextView) findViewById(R.id.et_city_filter);
         cityFilter.addTextChangedListener(new TextWatcher() {
@@ -167,7 +167,7 @@ public class CitySelectorActivity extends Activity {
         locationClient.setLocOption(locationClientOption);
     }
 
-    private void location2() {
+    private void location() {
         setLocationOptions();
         if (!locationClient.isStarted()) {
             locationClient.start();
