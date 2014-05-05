@@ -242,7 +242,7 @@
                     android:layout_width="70.0dip"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="指数"
+                    android:text="@string/forecast_index"
                     android:textColor="@color/white_color"
                     android:textSize="14.0dip" />
 

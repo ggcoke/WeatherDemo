@@ -84,10 +84,14 @@ public class LeftSlideFragment extends Fragment {
     }
 
     public void refreshCityList() {
-        String[] cities = WeatherSharedPreferencesEdit.getInstance(getActivity()).getSelectedCity().split("-");
-        EditableCity city = new EditableCity(cities[cities.length - 1], false);
-        mCityList.add(city);
-        mListSwipAdapter.notifyDataSetChanged();
+        String cityList = WeatherSharedPreferencesEdit.getInstance(getActivity()).getSelectedCity();
+        if (cityList != null) {
+            String[] cities = cityList.split("-");
+            EditableCity city = new EditableCity(cities[cities.length - 1], false);
+            mCityList.add(city);
+            mListSwipAdapter.notifyDataSetChanged();
+        }
+
     }
 
     public void setMainFragment(MainFragment mainFragment) {

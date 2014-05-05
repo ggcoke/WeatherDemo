@@ -14,6 +14,20 @@
         android:hint="@string/city_filter_hint"
         android:singleLine="true" />
 
+    <LinearLayout
+        android:id="@+id/ll_city_auto_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_city_filter"
+        android:layout_marginBottom="@dimen/margin_small">
+
+        <TextView
+            android:id="@+id/tv_city_auto_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_medium" />
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/rl_hot_city"
         android:layout_width="match_parent"
@@ -49,7 +63,8 @@
         android:layout_height="match_parent"
         android:layout_below="@id/et_city_filter"
         android:layout_margin="10dip"
-        android:visibility="visible">
+        android:visibility="gone">
+
         <TextView
             android:id="@+id/tv_city_filter_noresult"
             android:layout_width="match_parent"
@@ -57,7 +72,8 @@
             android:gravity="center"
             android:text="@string/city_filter_noresult"
             android:textSize="20dp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
+
         <ListView
             android:id="@+id/lv_city_filter_result"
             android:layout_width="match_parent"

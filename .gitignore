@@ -27,3 +27,8 @@ build/
 # tags
 tags
 
+# Eclipse project setting
+.classpath
+.project
+project.properties
+

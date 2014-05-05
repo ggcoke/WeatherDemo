@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -13,6 +15,10 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.ggcoke.weatherdemo.R;
 import com.ggcoke.weatherdemo.adapter.CityListAdapter;
 import com.ggcoke.weatherdemo.adapter.HotCityAdapter;
@@ -40,6 +46,11 @@ public class CitySelectorActivity extends Activity {
     private HotCityAdapter hotCityAdapter;
     private List<String> hotCityData = new ArrayList<String>();
 
+    private LocationClient locationClient;
+    private LocationClientOption locationClientOption;
+    private LocationListener locationListener;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +59,8 @@ public class CitySelectorActivity extends Activity {
         String cityInfo = WeatherSharedPreferencesEdit.getInstance(this).getHotCities();
         String[] cities = cityInfo.split("-");
         String selectedCities = WeatherSharedPreferencesEdit.getInstance(this).getSelectedCity();
-        for(String city : cities) {
+        hotCityData.add(0, getResources().getString(R.string.city_auto_location_hint));
+        for (String city : cities) {
             if (hotCityData.contains(city) || (null != selectedCities && selectedCities.contains(city))) {
             } else {
                 hotCityData.add(city);
@@ -69,6 +81,12 @@ public class CitySelectorActivity extends Activity {
         filterCities.setAdapter(filterAdapter);
 
         filterResultNone = (TextView) findViewById(R.id.tv_city_filter_noresult);
+
+        locationListener = new LocationListener();
+        locationClient = new LocationClient(getApplicationContext());
+        locationClient.setAK(WeatherConstants.BD_LOCATION_KEY);
+        locationClient.registerLocationListener(locationListener);
+        location2();
 
         cityFilter = (TextView) findViewById(R.id.et_city_filter);
         cityFilter.addTextChangedListener(new TextWatcher() {
@@ -123,6 +141,41 @@ public class CitySelectorActivity extends Activity {
         });
     }
 
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case WeatherConstants.AUTO_LOCATION_FAILED:
+                    hotCityData.set(0, getResources().getString(R.string.city_auto_location_error));
+                    hotCityAdapter.notifyDataSetChanged();
+                    break;
+                case WeatherConstants.AUTO_LOCATION_SUCCESS:
+                    hotCityData.set(0, msg.getData().getString("location"));
+                    hotCityAdapter.notifyDataSetChanged();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+    private void setLocationOptions() {
+        locationClientOption = new LocationClientOption();
+        locationClientOption.setOpenGps(true);
+        locationClientOption.disableCache(true);
+        locationClientOption.setAddrType("all");
+        locationClientOption.setPriority(LocationClientOption.GpsFirst);
+        locationClient.setLocOption(locationClientOption);
+    }
+
+    private void location2() {
+        setLocationOptions();
+        if (!locationClient.isStarted()) {
+            locationClient.start();
+        }
+
+        locationClient.requestLocation();
+    }
+
     private void filter(CharSequence content) {
         if (null == content || content.length() <= 0) {
             rlHotCity.setVisibility(View.VISIBLE);
@@ -155,5 +208,30 @@ public class CitySelectorActivity extends Activity {
             }
         }
         cursor.close();
+    }
+
+    private class LocationListener implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation bdLocation) {
+            if (bdLocation == null || bdLocation.getDistrict() == null || bdLocation.getDistrict().equals("")) {
+                hotCityData.set(0, getResources().getString(R.string.city_auto_location_error));
+                hotCityAdapter.notifyDataSetChanged();
+                return;
+            } else {
+                StringBuilder sb = new StringBuilder();
+                sb.append(bdLocation.getProvince()).append("_")
+                        .append(bdLocation.getCity()).append("_")
+                        .append(bdLocation.getDistrict());
+                hotCityData.set(0, sb.toString());
+                hotCityAdapter.notifyDataSetChanged();
+                locationClient.stop();
+            }
+
+        }
+
+        @Override
+        public void onReceivePoi(BDLocation bdLocation) {
+        }
     }
 }

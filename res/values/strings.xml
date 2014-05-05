@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">天气应用</string>
+    <string name="app_name">天气</string>
     <string name="left_slide_menu">功能菜单</string>
     <string name="left_slide_menu_setting">\u0020设置</string>
     <string name="left_slide_menu_skin">\u0020皮肤</string>
@@ -20,6 +20,7 @@
     <string name="forecast_current_shidu">湿度</string>
     <string name="forecast_current_update_time">发布时间</string>
     <string name="forecast_alarm">天气预警</string>
+    <string name="forecast_index">指数</string>
     
     <!-- 各种指数 -->
     <string name="today_index_gm">感冒指数</string>
@@ -38,4 +39,11 @@
     <string name="city_filter_hint">输入城市名称</string>
     <string name="city_hot_city">热门城市</string>
     <string name="city_filter_noresult">没有找到对应城市</string>
+    <string name="city_auto_location_hint">正在定位</string>
+    <string name="city_auto_location_error">自动定位失败</string>
+    
+    <string name="alert_title_setting_gps">提示</string>
+    <string name="alert_message_setting_gps">打开GPS可以提高定位准确度，是否打开GPS？</string>
+    <string name="alert_positive_setting_gps">确认</string>
+    <string name="alert_negative_setting_gps">取消</string>
 </resources>

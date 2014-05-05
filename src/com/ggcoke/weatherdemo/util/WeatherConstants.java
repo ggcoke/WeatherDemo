@@ -17,4 +17,14 @@ public class WeatherConstants {
 
     public static final int INTENT_CODE_SUCCESS = 0x0000;
     public static final int INTENT_CODE_ADD_CITY = 0x0001;
+
+    public static final int AUTO_LOCATION_FAILED = 0x2;
+    public static final int AUTO_LOCATION_SUCCESS = 0x1;
+
+    public static final int AUTO_LOCATION_RETRY_SLEEP = 1000;
+    public static final int AUTO_LOCATION_RETRY_TIMES = 5;
+
+//    public static final String BD_LOCATION_KEY = "l2wcju6pnTxSIEQshK9AhbRZ";
+    public static final String BD_LOCATION_KEY = "697f50541f8d4779124896681cb6584d";
 }
+
