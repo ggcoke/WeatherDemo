@@ -2,7 +2,7 @@ package com.ggcoke.weatherdemo.activity;
 
 import android.app.Activity;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,7 +22,7 @@ import com.baidu.location.LocationClientOption;
 import com.ggcoke.weatherdemo.R;
 import com.ggcoke.weatherdemo.adapter.CityListAdapter;
 import com.ggcoke.weatherdemo.adapter.HotCityAdapter;
-import com.ggcoke.weatherdemo.db.DBHelper;
+import com.ggcoke.weatherdemo.provider.CityMetaData;
 import com.ggcoke.weatherdemo.util.WeatherConstants;
 import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
 
@@ -197,17 +197,17 @@ public class CitySelectorActivity extends Activity {
     }
 
     private void getFilterResult(CharSequence content) {
-        DBHelper helper = new DBHelper(CitySelectorActivity.this);
-        SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT c1.name, c2.name, c3.name FROM city c1, city c2, city c3 WHERE c1.id = c3.province AND c2.id = c3.district AND c3.name LIKE ? AND c3.level = ? ORDER BY c3.province ASC", new String[]{"%" + content + "%", "3"});
+        Uri uri = Uri.withAppendedPath(CityMetaData.City.CONTENT_NAME_URI_BASE, content.toString());
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+
         if (null != cursor && cursor.getCount() > 0) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
                 cityData.add(cursor.getString(0) + "_" + cursor.getString(1) + "_" + cursor.getString(2));
                 cursor.moveToNext();
             }
+            cursor.close();
         }
-        cursor.close();
     }
 
     private class LocationListener implements BDLocationListener {

@@ -33,6 +33,12 @@
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
         </activity>
+        <provider android:name=".provider.WeatherCityProvider"
+            android:authorities="com.ggcoke.weatherdemo.city"
+            android:exported="false">
+            <grant-uri-permission android:pathPattern=".*" />
+        </provider>
+
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote" ></service>
     </application>
 

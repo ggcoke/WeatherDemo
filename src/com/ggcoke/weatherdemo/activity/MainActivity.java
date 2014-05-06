@@ -15,7 +15,6 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.ggcoke.weatherdemo.R;
-import com.ggcoke.weatherdemo.db.DBHelper;
 import com.ggcoke.weatherdemo.fragment.LeftSlideFragment;
 import com.ggcoke.weatherdemo.fragment.MainFragment;
 import com.ggcoke.weatherdemo.util.WeatherConstants;
@@ -36,8 +35,6 @@ public class MainActivity extends SherlockFragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        DBHelper dbHelper = new DBHelper(MainActivity.this);
-        dbHelper.getReadableDatabase();
         mainFragment = new MainFragment();
         if(WeatherSharedPreferencesEdit.getInstance(this).getSelectedCity() != null) {
             System.out.println(WeatherSharedPreferencesEdit.getInstance(this).getSelectedCity());
