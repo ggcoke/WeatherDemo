@@ -46,4 +46,6 @@
     <string name="alert_message_setting_gps">打开GPS可以提高定位准确度，是否打开GPS？</string>
     <string name="alert_positive_setting_gps">确认</string>
     <string name="alert_negative_setting_gps">取消</string>
+
+    <string name="widget_no_city">还没有设置城市，点击设置</string>
 </resources>

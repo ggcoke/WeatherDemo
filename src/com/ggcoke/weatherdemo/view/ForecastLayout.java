@@ -7,9 +7,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ggcoke.weatherdemo.R;
+import com.ggcoke.weatherdemo.util.Utils;
 import com.ggcoke.weatherdemo.util.WeatherConstants;
 import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
-import com.ggcoke.weatherdemo.util.NetworkUtil;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -85,7 +85,7 @@ public class ForecastLayout extends LinearLayout{
             showWeather();
         }
         
-        if (NetworkUtil.netWorkAvilable(mContext)) {
+        if (Utils.isNetworkAvilable(mContext)) {
             AsyncHttpClient clientCurrentWeather = new AsyncHttpClient();
             clientCurrentWeather.get(WeatherConstants.WEATHER_LETV_URL + city, new JsonHttpResponseHandler(){
                 @Override

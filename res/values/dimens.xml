@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_negative">-2.0dip</dimen>
     <dimen name="dimen_zero">0dip</dimen>
     <dimen name="margin_none">0dip</dimen>
     <dimen name="margin_tiny">1.0dip</dimen>
@@ -22,6 +23,13 @@
     <dimen name="text_size_small">10.0dip</dimen>
     <dimen name="text_size_medium">15.0dip</dimen>
     <dimen name="text_size_large">20.0dip</dimen>
+    <dimen name="text_size_xlarge">48.0dip</dimen>
 
     <dimen name="length_show_delete">75.0dip</dimen>
+
+    <dimen name="widget_image_width">45.0dip</dimen>
+    <dimen name="widget_image_height">45.0dip</dimen>
+    <dimen name="widget_text_size_small">12.0dip</dimen>
+    <dimen name="widget_text_size_large">18.0dip</dimen>
+    <dimen name="widget_text_size_xlarge">28.0dip</dimen>
 </resources>

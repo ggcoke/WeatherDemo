@@ -7,9 +7,14 @@ public class WeatherConstants {
     public static final int INTENT_CODE_SUCCESS = 0x0000;
     public static final int INTENT_CODE_ADD_CITY = 0x0001;
 
-    public static final int AUTO_LOCATION_FAILED = 0x2;
     public static final int AUTO_LOCATION_SUCCESS = 0x1;
+    public static final int AUTO_LOCATION_FAILED = 0x2;
 
     public static final String BD_LOCATION_KEY = "l2wcju6pnTxSIEQshK9AhbRZ";
+
+    public static final String SPLIT_STRING_CITY = "-";
+    public static final String SPLIT_STRING_INFO = "_";
+
+    public static final String WEATHER_NIGHT_TIME = "18:00:00";
 }
 

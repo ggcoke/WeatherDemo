@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.ggcoke.weatherdemo.R;
 import com.ggcoke.weatherdemo.activity.MainActivity;
 import com.ggcoke.weatherdemo.adapter.ViewPagerAdapter;
+import com.ggcoke.weatherdemo.util.WeatherConstants;
 import com.ggcoke.weatherdemo.util.WeatherSharedPreferencesEdit;
 import com.ggcoke.weatherdemo.view.ForecastLayout;
 
@@ -96,7 +97,7 @@ public class MainFragment extends Fragment {
     private void getCities() {
         String city = WeatherSharedPreferencesEdit.getInstance(getActivity()).getSelectedCity();
         if (city != null && city.length() > 0) {
-            String[] cityInfos = city.split("-");
+            String[] cityInfos = city.split(WeatherConstants.SPLIT_STRING_INFO);
             cityList = Arrays.asList(cityInfos);
         } else {
             Toast.makeText(getActivity(), R.string.city_auto_location_error, Toast.LENGTH_SHORT).show();
@@ -128,17 +129,8 @@ public class MainFragment extends Fragment {
 
     public void delCity(String city) {
         if (null != city && 0 != city.trim().length()) {
-//            for (ForecastLayout view : listViews) {
-//                if (view.getCity().equals(city)) {
-//                    listViews.remove(view);
-//                    break;
-//                }
-//            }
             viewPager.setAdapter(null);
-
             resetView();
-//            adapter.notifyDataSetChanged();
-
             adapter.setList(listViews);
             viewPager.setAdapter(adapter);
             if (listViews.size() > 0) {

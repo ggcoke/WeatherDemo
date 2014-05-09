@@ -37,7 +37,6 @@ public class MainActivity extends SherlockFragmentActivity {
 
         mainFragment = new MainFragment();
         if(WeatherSharedPreferencesEdit.getInstance(this).getSelectedCity() != null) {
-            System.out.println(WeatherSharedPreferencesEdit.getInstance(this).getSelectedCity());
             FragmentManager fm2 = getSupportFragmentManager();
             FragmentTransaction ft2 = fm2.beginTransaction();
             ft2.replace(R.id.contentFrameLayout, mainFragment);
@@ -118,7 +117,7 @@ public class MainActivity extends SherlockFragmentActivity {
         if (WeatherConstants.INTENT_CODE_SUCCESS == resultCode) {
             String selectedCitis = WeatherSharedPreferencesEdit.getInstance(this).getSelectedCity();
             if (null != selectedCitis) {
-                String[] cities = selectedCitis.split("-");
+                String[] cities = selectedCitis.split(WeatherConstants.SPLIT_STRING_INFO);
                 if (1 == cities.length) {
                     FragmentManager fm2 = getSupportFragmentManager();
                     FragmentTransaction ft2 = fm2.beginTransaction();

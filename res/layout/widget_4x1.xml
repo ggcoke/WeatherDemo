@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_widgets"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/iv_widget_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/widget_black_bg" />
+
+        <TextView
+            android:id="@+id/tv_widget_no_city"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/text_size_large"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/ll_widget_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/ll_widget_tl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_widget_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_negative"
+                    android:textColor="@color/white_color"
+                    android:gravity="center"
+                    android:text="23:00"
+                    android:textSize="@dimen/text_size_xlarge" />
+
+                <TextView
+                    android:id="@+id/tv_widget_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/default_text_color"
+                    android:gravity="center"
+                    android:text="2014/05/08 星期四"
+                    android:textSize="@dimen/widget_text_size_small" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_widget_tr"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1.0" >
+
+                <TextView
+                    android:id="@+id/tv_widget_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="@dimen/margin_mini"
+                    android:layout_marginTop="@dimen/margin_mini"
+                    android:drawableRight="@drawable/ic_next"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/widget_text_size_large"
+                    android:text="北京"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/iv_widget_img_today"
+                    android:layout_width="@dimen/widget_image_width"
+                    android:layout_height="@dimen/widget_image_height"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:src="@drawable/day0"/>
+
+                <TextView
+                    android:id="@+id/tv_widget_temp_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/tv_widget_city"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_negative"
+                    android:gravity="center"
+                    android:paddingRight="@dimen/padding_medium"
+                    android:textColor="@color/white_color"
+                    android:text="23"
+                    android:textSize="@dimen/widget_text_size_xlarge" />
+
+                <TextView
+                    android:id="@+id/tv_widget_temp_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/tv_widget_temp_now"
+                    android:layout_marginRight="@dimen/margin_small"
+                    android:paddingRight="@dimen/padding_medium"
+                    android:textColor="@color/white_color"
+                    android:text="27/19"
+                    android:textSize="@dimen/widget_text_size_small" />
+
+                <TextView
+                    android:id="@+id/tv_widget_desc_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/iv_widget_img_today"
+                    android:layout_alignRight="@id/iv_widget_img_today"
+                    android:layout_below="@id/iv_widget_img_today"
+                    android:paddingLeft="@dimen/padding_small"
+                    android:textColor="@color/white_color"
+                    android:layout_marginTop="@dimen/margin_mini"
+                    android:gravity="center"
+                    android:text="晴"
+                    android:textSize="@dimen/widget_text_size_small" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

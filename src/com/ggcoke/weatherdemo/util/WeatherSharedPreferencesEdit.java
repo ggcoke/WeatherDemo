@@ -31,11 +31,20 @@ public class WeatherSharedPreferencesEdit {
     }
 
     
-    public void setLastUpdateTime(long LastUpdateTime) {
-        editor.putLong("LastUpdateTime", LastUpdateTime).commit();
+    public void setLastUpdateTime(long lastUpdateTime) {
+        editor.putLong("LastUpdateTime", lastUpdateTime).commit();
     }
     public long getLastUpdateTime() {
         return sPreferences.getLong("LastUpdateTime", 0);
+    }
+
+    public void setUpdatePeriod(long period) {
+        editor.putLong("updatePeriod", period).commit();
+    }
+
+    public long getUpdatePeriod() {
+        return 1*60*1000;
+//        return sPreferences.getLong("updatePeriod", 0);
     }
     
     public void setWeatherInfoWithCityCode(String cityCode, String weatherInfo) {
